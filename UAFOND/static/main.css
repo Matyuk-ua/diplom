@@ -1,0 +1,107 @@
+@font-face {
+    font-family: 'JosefinSans';
+    src: url('/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+}
+
+#highbar{
+    background-color: #FFB098;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    right: 0%;
+    height: 105px;
+    display: flex; 
+    justify-content: space-between;
+}
+#highbar ul {
+    list-style-type: none;
+    margin: 35px;
+    padding: 0;
+    display: block;
+}
+#highbar ul li {
+    font-family: 'MyCustomFont', sans-serif;
+    display: inline;
+    margin-right: 100px;
+    font-size: 30px;
+    white-space: nowrap;
+}
+#highbar button {
+    float: right;
+    font-family: 'MyCustomFont', sans-serif;
+    margin: 17px;
+    margin-right: 20px;
+    font-size: 30px;
+    height: 70px;
+    width: 300px;
+    border-radius: 7px;
+    border-width: 0px;
+    font-size: 48px;
+    background-color: #3F3CDC;
+    font-weight: bold;
+    color: #FFFFFF;
+}
+#about{
+    margin: auto;
+    margin: 150px;
+    margin-top: 130px;
+    font-family: 'MyCustomFont', sans-serif;
+    justify-content: center;
+    align-items: center;
+}
+#about p{
+    font-family: 'MyCustomFont', sans-serif;
+    font-size: 32px;
+}
+#about hr{
+    border-top: 1px solid black;
+    border-bottom: 2px solid black;
+
+}
+#projects{
+    margin: auto;
+    margin-top: 100px;
+    display: flex;
+}
+#slider-container{
+    position: absolute;
+    width: 800px;
+    margin-left: 30%;
+    display: flex;
+    overflow:hidden;
+}
+#slider-container button {
+    background-color: whitesmoke; 
+    border: none;
+    opacity: 0.5;
+    font-size: 50px;
+    margin-top: 200px;
+    cursor: pointer;
+}
+
+#left_slide {
+    position: absolute;
+    left: 10px;
+}
+
+#right_slide {
+    position: absolute;
+    right: 10px;
+}
+
+.project-img{
+    width: 800px;
+    height: auto;
+}
+
+.d
+
+#news{
+    margin: auto;
+    margin-top: 100px;
+}
+#lowbar{
+    position: fixed;
+    display: flex;
+    bottom: 0px;
+}

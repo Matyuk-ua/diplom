@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="uk-UA">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Серце Героя</title>
+</head>
+<body>
+    {% csrf_token %}
+    <div id="highbar">
+        <img src = "../static/label.png">
+        <ul>
+            <li>Про фонд</li>
+            <li>Проєкти</li>
+            <li>Новини</li>
+            <li>FAQ</li>
+            <li>Звіти</li>
+        </ul>
+        <button>Підтримати</button>
+    </div>
+    <div id="about">
+        <p style = "font-size: 42px; font-weight: bold; ">Про фонд Серце Героя</p>
+        <p>Серце Героя - це благодійний фонд,
+            який відданий підтримці та допомозі
+            нашим героям та їх сім'ям. Коли війна
+            залишає свої сліди в житті багатьох,
+            ми стоїмо разом зі звичайними героями,
+            які віддали своє серце за мир. Наша
+            місія - надати підтримку у вигляді 
+            медичного догляду, матеріальної допомоги 
+            та соціальної адаптації тим, хто став 
+            жертвою війни. Через об'єднання зламаних 
+            сердець у доброчинності ми створюємо
+            спільноту, де кожен може знайти підтримку
+            та знайомство з надією на краще майбутнє.</p>
+        <hr>
+    </div>
+    <div id="projects">
+        <div id="slider-container">
+            <button id = "left_slide">&lt;</button>
+            <button id = "right_slide">&gt;</button>
+    {%block content%}
+        {% for project in projects %}
+            <img class = "project-img" src="{{ MEDIA_URL }}{{ project.img.url }}" alt="Image">
+        {% endfor %}
+        <ul>
+            {% for project in projects %}
+            <li><button class = "dot"></button></li>
+            {% endfor %}
+        </ul>
+        </div>
+    {%endblock%}
+        </div>
+    </div>
+    <div id="news">
+        <div id="main_news">
+            <div id="image"><img></div>
+            <p></p>
+        </div>
+        <div id="other_news">
+            
+        </div>
+    </div>
+    <div id="lowbar">
+    </div>
+    <link rel="stylesheet" href="../static/main.css">
+</body>
+</html>
