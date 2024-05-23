@@ -5,19 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Серце Героя</title>
+    {% load static %}
 </head>
 <body>
     {% csrf_token %}
     <div id="highbar">
-        <img src = "../static/label.png">
+        <img src="../static/label.png">
         <ul>
-            <li>Про фонд</li>
-            <li>Проєкти</li>
-            <li>Новини</li>
-            <li>FAQ</li>
-            <li>Звіти</li>
+            <li><a href="{% url 'about' %}">Про фонд</a></li>
+            <li><a href="{% url 'projects' %}">Проєкти</a></li>
+            <li><a href="{% url 'news' %}">Новини</a></li>
+            <li><a href="{% url 'report' %}">Звіти</a></li>
         </ul>
-        <button>Підтримати</button>
+        <button onclick="window.location.href='{% url 'support' %}'">Підтримати</button>
     </div>
     <div id="about">
         <p style = "font-size: 42px; font-weight: bold; ">Про фонд Серце Героя</p>
@@ -36,34 +36,48 @@
             та знайомство з надією на краще майбутнє.</p>
         <hr>
     </div>
-    <div id="projects">
-        <div id="slider-container">
-            <button id = "left_slide">&lt;</button>
-            <button id = "right_slide">&gt;</button>
     {%block content%}
-        {% for project in projects %}
-            <img class = "project-img" src="{{ MEDIA_URL }}{{ project.img.url }}" alt="Image">
+    <div id="slideshow-container">
+        {% for project in projects|slice:":5"%}
+            {% if project.active %}
+                <div class="ProjSlides fade">
+                  <img src="{{ MEDIA_URL }}{{ project.img.url }}" style="width:100%">
+                </div>
+            {% endif %}
         {% endfor %}
-        <ul>
-            {% for project in projects %}
-            <li><button class = "dot"></button></li>
-            {% endfor %}
-        </ul>
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>    
+        <div style="text-align:center">
+            <script src="{% static 'scripts/dots.js' %}"></script>
         </div>
-    {%endblock%}
-        </div>
+    
     </div>
     <div id="news">
         <div id="main_news">
-            <div id="image"><img></div>
-            <p></p>
+            {% for artcl in news %}
+                {% if forloop.first %}
+                    <div id="news_image"><img src="{{ MEDIA_URL }}{{ artcl.img.url }}" alt="Image"></div>
+                    <p class="text">{{ artcl.text }}</p>
+                    <p class="time">{{ artcl.time }}</p>
+                {% endif %}
+            {% endfor %}
         </div>
         <div id="other_news">
-            
+            {% for artcl in news|slice:":5" %}  
+                {% if not forloop.first%}
+                    <div class="news_artcl">
+                        <p class="text">{{ artcl.title }}</p>
+                        <p class="time">{{ artcl.time }}</p>
+                        <hr>
+                    </div>
+                {% endif %}
+            {% endfor %}
         </div>
-    </div>
+    </div>    
     <div id="lowbar">
     </div>
     <link rel="stylesheet" href="../static/main.css">
+    <script src="{% static 'scripts/Slideshow.js' %}"></script>
+    {% endblock %}
 </body>
 </html>

@@ -1,0 +1,103 @@
+<html lang="uk-UA">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Серце Героя</title>
+    {% load static %}
+</head>
+<body>
+    {% csrf_token %}
+    <div id="highbar">
+        <img src = "../static/label.png">
+        <ul>
+            <li><a href="{% url 'main' %}">Титульна сторінка</a></li>
+            <li><a href="{% url 'about' %}">Про фонд</a></li>
+            <li><a href="{% url 'projects' %}">Проєкти</a></li> 
+            <li><a href="{% url 'report' %}">Звіти</a></li>
+        </ul>
+        <button onclick="window.location.href='{% url 'support' %}'">Підтримати</button>
+    </div>
+    {%block content%}
+    <div id="news_space">
+        {% for arctl in news|slice:":2" %}
+            <div class="news">
+                <div class="news_img">
+                    <img src="{{ MEDIA_URL }}{{ arctl.img.url }}" alt="Image">
+                </div>
+                <div class = "infoblock">
+                    <p class="title">{{arctl.title}}</p>
+                    <p class="text">{{arctl.text}}</p>
+                    <p class="author">{{arctl.author}}</p>
+                    <p class="time">{{arctl.time}}</p>
+                </div>
+            </div>
+            <hr>
+        {% endfor %}
+        </div>
+        <button class="load-more" onclick="loadMore()">Load More</button>
+    </div> 
+    {% comment %} <script src="{% static 'scripts/load_more.js' %}"></script> {% endcomment %}
+    <script>
+        let newsIndex = 2;
+        const newsList = {{ news|safe }};
+
+        function loadMore() {
+            const newsSpace = document.getElementById('news_space');
+
+            for (let i = newsIndex; i < newsIndex + 2 && i < newsList.length; i++) {
+                const newsItem = document.createElement('div');
+                newsItem.classList.add('news');
+
+                const newsImg = document.createElement('div');
+                newsImg.classList.add('news_img');
+                const img = document.createElement('img');
+                img.src = `{{ MEDIA_URL }}${newsList[i].img.url}`;
+                img.alt = 'Image';
+                newsImg.appendChild(img);
+
+                const infoBlock = document.createElement('div');
+                infoBlock.classList.add('infoblock');
+
+                const title = document.createElement('p');
+                title.classList.add('title');
+                title.textContent = newsList[i].title;
+
+                const text = document.createElement('p');
+                text.classList.add('text');
+                text.textContent = newsList[i].text;
+
+                const author = document.createElement('p');
+                author.classList.add('author');
+                author.textContent = newsList[i].author;
+
+                const time = document.createElement('p');
+                time.classList.add('time');
+                time.textContent = newsList[i].time;
+
+                infoBlock.appendChild(title);
+                infoBlock.appendChild(text);
+                infoBlock.appendChild(author);
+                infoBlock.appendChild(time);
+
+                newsItem.appendChild(newsImg);
+                newsItem.appendChild(infoBlock);
+
+                newsSpace.appendChild(newsItem);
+                newsSpace.appendChild(document.createElement('hr'));
+            }
+
+            newsIndex += 2;
+
+            if (newsIndex >= newsList.length) {
+                document.querySelector('.load-more').style.display = 'none';
+            }
+        }
+    </script>
+
+    {% endblock %}
+    <div id="lowbar">
+    </div>
+    <link rel="stylesheet" href="../static/news.css">
+</body>
+</html>

@@ -1,0 +1,25 @@
+<html lang="uk-UA">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Серце Героя</title>
+    {% load static %}
+</head>
+<body>
+    {% csrf_token %}
+    <div id="highbar">
+        <img src = "../static/label.png">
+        <ul>
+            <li><a href="{% url 'main' %}">Титульна сторінка</a></li>
+            <li><a href="{% url 'about' %}">Про фонд</a></li>
+            <li><a href="{% url 'projects' %}">Проєкти</a></li>
+            <li><a href="{% url 'news' %}">Новини</a></li>
+        </ul>
+        <button onclick="window.location.href='{% url 'support' %}'">Підтримати</button>
+    </div>
+    <div id="lowbar">
+    </div>
+    <link rel="stylesheet" href="../static/reports.css">
+</body>
+</html>

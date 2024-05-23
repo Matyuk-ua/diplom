@@ -7,6 +7,7 @@ html, body {
     padding: 0;
     min-width: 1100px;
 }
+
 /* заголовок */
 #highbar{
     background-color: #FFB098;
@@ -37,15 +38,15 @@ html, body {
 }
 #highbar ul li a{
     color: inherit;
-    text-decoration: none;
+    text-decoration: none; 
 }
-@media screen and (min-width: 1500px) {
+@media screen and (min-width: 1675px) {
     #highbar ul li {
         margin-right: 40px;
         margin-left: 40px;
     }
 }
-@media screen and (max-width: 1655px) {
+@media screen and (max-width: 1675px) {
     #highbar ul li {
         margin-right: 10px;
         margin-left: 10px;
@@ -68,7 +69,7 @@ html, body {
     color: #FFFFFF;
     cursor: pointer;
 }
-@media screen and (max-width: 1251px) {
+@media screen and (max-width: 1375px) {
     #highbar ul li {
         margin-right: 5px;
         margin-left: 5px;
@@ -76,127 +77,124 @@ html, body {
     }
     #highbar button {
         margin-right: 5px;
-        margin-left: 5px;
+        margin-left: 3px;
         font-size: 40px;
         width: 240px;
     }
 }
-/* вступний текст */
-#about{
-    margin: 130px;
-    margin-bottom: 70px;
-    font-family: 'MyCustomFont', sans-serif;
+/* простір проєктів */
+#proj_space{
+    display: grid;
     justify-content: center;
-    align-items: center;
+    width: 100%;
 }
-#about p{
-    font-family: 'MyCustomFont', sans-serif;
-    font-size: 32px;
+/* банер з останніми проєктами? */
+#project_banner{
+    width: 100%;
 }
-#about hr{
-    border-top: 1px solid black;
-    border-bottom: 2px solid black;
-}
-#slideshow-container {
+/* активні збори */
+#active_projects{
     width: 1000px;
-    position: relative;
-    display: flex;
-    margin: auto;
-    flex-direction: column;
-}
-  .ProjSlides {
-    display: none;
-  }
-  .prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    margin-top: -22px;
-    padding: 16px;
-    color: white;
-    font-weight: bold;
-    font-size: 18px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-  }
-  .next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-  }
-  .prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
-  }
-  .dot {
-    cursor: pointer;
-    height: 15px;
-    width: 15px;
-    margin: 0 2px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-  }
-  .active, .dot:hover {
-    background-color: #717171;
-  }
-  .fade {
-    animation-name: fade;
-    animation-duration: 1.5s;
-  }
-  @keyframes fade {
-    from {opacity: .4}
-    to {opacity: 1}
-  }
-/* новини */
-#news{
-    margin: auto;
-    margin-top: 60px;
-    display: flex;
     justify-content: center;
-    align-items: center;
-    margin-bottom: 105px;
 }
-/* остання новина */
-#main_news{
-    position: relative;
-    height: 550px;
-    width: 740px;
+/* архівні збори */
+#arhived_projects{
+    width: 1000px;
+    justify-content: center;
+}
+/* клас окремого проєкту */
+.project{
+    display: flex;
+    width: 100%;
+    height: 300px;
     margin: 10px;
+    font-family: 'MyCustomFont', sans-serif;
 }
-#news_image{
-    height: 500px;
-    width: 740px;
+/* картинка */
+.proj_img{
+    width: 500px;
+    height: 300px;
     background-color: rgb(180, 180, 180);
     display: flex;
     justify-content: center;
     align-items: center;
 }
-#news_image img {
+.proj_img img{
     max-width: 100%;
     max-height: 100%;
 }
-/* інші новини */
-#other_news{
-    justify-content: center;
-    align-items: center;
+/* блок тексту і грошей */
+.infoblock {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 500px;
     height: 100%;
-    width: 300px;
+    margin-left: 10px;
 }
-#other_news hr {
-    border-top: 0.5px solid black;
-    border-bottom: 0.5px solid black;
-    width: 300px;
+/* блок з текстом */
+.proj_textblock{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 250px;
+}
+.title {
+    font-size: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    box-sizing: border-box;
 }
 .text{
-    font-family: 'MyCustomFont', sans-serif;
-    font-size: 25px;
+    position: relative;
+    flex: 1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
 }
-.time{
+.author{
+    position: relative;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+/* прогрес бар */
+.proj_moneybar {
+    position: absolute;
+    height: 50px;
+    bottom: 10px;
+    width: 100%;
+    background-color: rgb(154, 154, 154);
+    border-radius: 30px;
+}
+.fulled_bar {
+    position: absolute;
+    height: 100%;
+    background-color: rgb(76, 175, 80);
+    border-radius: 30px 0 0 30px;
+}
+.proj_moneybar.full .fulled_bar {
+    border-radius: 30px;
+}
+.money{
+    position: absolute;
+    display: flex;
+    right: 10px;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+.title{
     font-family: 'MyCustomFont', sans-serif;
-    float: right;
-    font-size: 17px;
+    font-size: 30px;
+}
+#proj_space hr{
+    border-top: 1px solid black;
+    border-bottom: 2px solid black;
+    width: 1000px;
+    margin-top: 30px;
+    margin-bottom: 30px;
 }
 #lowbar{
     position: relative;
@@ -204,9 +202,10 @@ html, body {
     bottom: 0px;
     left: 0%;
     right: 0%;
-    margin: 0;
+    margin-top: 0;
     padding: 0;
     height: 105px;
+    width: 100xp;
     display: flex; 
     justify-content: space-between;
     clear: both;
