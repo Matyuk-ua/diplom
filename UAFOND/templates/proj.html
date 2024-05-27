@@ -1,0 +1,47 @@
+<html lang="uk-UA">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Серце Героя</title>
+    {% load static %}
+</head>
+<body>
+    {% csrf_token %}
+    <div id="highbar">
+        <img src = "{% static 'label.png' %} ">
+        <ul>
+            <li><a href="{% url 'main' %}">Титульна сторінка</a></li>
+            <li><a href="{% url 'about' %}">Про фонд</a></li>
+            <li><a href="{% url 'projects' %}">Проєкти</a></li>
+            <li><a href="{% url 'news' %}">Новини</a></li>
+            <li><a href="{% url 'report' %}">Звіти</a></li>
+        </ul>
+        <button onclick="window.location.href='{% url 'support' %}'">Підтримати</button>
+    </div>
+    <div class="project">
+        <div class="proj_img">
+            <img src="{{ MEDIA_URL }}{{ project.img.url }}" alt="Image">
+        </div>
+        <div class = "infoblock">
+            <p class="title">{{project.title}}</p>
+            <div id = "proj_cap">
+                <p class="author"> Зібрано:</p>
+            </div>
+            <div class="proj_moneybar" data-coll-money="{{ project.coll_money }}" data-req-money="{{ project.req_money }}">
+                <div class="fulled_bar">
+                </div>
+                <p class="money">{{ project.coll_money }} / {{ project.req_money }}</p>
+            </div> 
+            <hr>
+            {% comment %} <button id = "support_proj" onclick="window.location.href='{% url 'support' project.id%}'">Підтримати проєкт</button> {% endcomment %}
+            <p class="text">{{project.text}}</p>                       
+        </div>
+    </div>
+
+    <div id="lowbar">
+    </div>
+    <link rel="stylesheet" href="{% static 'proj.css' %}">
+    <script src="{% static 'scripts/moneybar.js' %}"></script>
+</body>
+</html>

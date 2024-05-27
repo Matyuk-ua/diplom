@@ -19,85 +19,31 @@
         <button onclick="window.location.href='{% url 'support' %}'">Підтримати</button>
     </div>
     {%block content%}
+    <div id = "searchbar_field">
+        <input id="searchbar" type="text" placeholder="Search..">
+        <button id="search">Пошук</button>
+    </div>
     <div id="news_space">
-        {% for arctl in news|slice:":2" %}
+        {% for article in news %}
             <div class="news">
                 <div class="news_img">
-                    <img src="{{ MEDIA_URL }}{{ arctl.img.url }}" alt="Image">
+                    <img src="{{ MEDIA_URL }}{{ article.img.url }}" alt="Image">
                 </div>
                 <div class = "infoblock">
-                    <p class="title">{{arctl.title}}</p>
-                    <p class="text">{{arctl.text}}</p>
-                    <p class="author">{{arctl.author}}</p>
-                    <p class="time">{{arctl.time}}</p>
+                    <a class="title" href="{% url 'artcl' article.id %}">{{article.title}}</a>
+                    <p class="text">{{article.text}}</p>
+                    <p class="author">{{article.author}}</p>
+                    <p class="time">{{article.time}}</p>
                 </div>
             </div>
             <hr>
         {% endfor %}
         </div>
-        <button class="load-more" onclick="loadMore()">Load More</button>
     </div> 
-    {% comment %} <script src="{% static 'scripts/load_more.js' %}"></script> {% endcomment %}
-    <script>
-        let newsIndex = 2;
-        const newsList = {{ news|safe }};
-
-        function loadMore() {
-            const newsSpace = document.getElementById('news_space');
-
-            for (let i = newsIndex; i < newsIndex + 2 && i < newsList.length; i++) {
-                const newsItem = document.createElement('div');
-                newsItem.classList.add('news');
-
-                const newsImg = document.createElement('div');
-                newsImg.classList.add('news_img');
-                const img = document.createElement('img');
-                img.src = `{{ MEDIA_URL }}${newsList[i].img.url}`;
-                img.alt = 'Image';
-                newsImg.appendChild(img);
-
-                const infoBlock = document.createElement('div');
-                infoBlock.classList.add('infoblock');
-
-                const title = document.createElement('p');
-                title.classList.add('title');
-                title.textContent = newsList[i].title;
-
-                const text = document.createElement('p');
-                text.classList.add('text');
-                text.textContent = newsList[i].text;
-
-                const author = document.createElement('p');
-                author.classList.add('author');
-                author.textContent = newsList[i].author;
-
-                const time = document.createElement('p');
-                time.classList.add('time');
-                time.textContent = newsList[i].time;
-
-                infoBlock.appendChild(title);
-                infoBlock.appendChild(text);
-                infoBlock.appendChild(author);
-                infoBlock.appendChild(time);
-
-                newsItem.appendChild(newsImg);
-                newsItem.appendChild(infoBlock);
-
-                newsSpace.appendChild(newsItem);
-                newsSpace.appendChild(document.createElement('hr'));
-            }
-
-            newsIndex += 2;
-
-            if (newsIndex >= newsList.length) {
-                document.querySelector('.load-more').style.display = 'none';
-            }
-        }
-    </script>
-
     {% endblock %}
     <div id="lowbar">
     </div>
     <link rel="stylesheet" href="../static/news.css">
+    <script src="{% static 'scripts/search_news.js' %}"></script>
 </body>
 </html>

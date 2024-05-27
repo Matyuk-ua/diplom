@@ -40,19 +40,19 @@ html, body {
     color: inherit;
     text-decoration: none; 
 }
-@media screen and (min-width: 1450px) {
+@media screen and (min-width: 1545px) {
     #highbar ul li {
         margin-right: 40px;
         margin-left: 40px;
     }
 }
-@media screen and (max-width: 1450px) {
+@media screen and (max-width: 1545px) {
     #highbar ul li {
         margin-right: 9px;
         margin-left: 9px;
+        font-size: 29px;
     }
 }
-
 /* кнопка донату */
 #highbar button {
     float: right;
@@ -69,92 +69,77 @@ html, body {
     color: #FFFFFF;
     cursor: pointer;
 }
-#searchbar_field{
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    margin-top: 20px;
-    height: auto;
-}
-#searchbar{
-    font-family: 'MyCustomFont', sans-serif;
-    font-size: 25px;
-    width: 800px;
-    margin: 10px;
-}
-#search{
-    width: 150px;
-    font-family: 'MyCustomFont', sans-serif;
-    background-color: #3F3CDC;
-    font-size: 30px;
-    font-weight: bold;
-    color: #FFFFFF;
-    cursor: pointer;
-}
-/* простір новин */
-#news_space{
-    display: grid;
-    justify-content: center;
-    width: 100%;
+@media screen and (max-width: 1230px) {
+    #highbar button {
+        font-size: 32px;
+        width: 200px;
+    }
 }
 /* клас окремої новини */
 .news{
     display: flex;
-    width: 100%;
-    height: 300px;
+    flex-direction: column;
+    height: 100%;
+    width: auto;
     margin: 10px;
     font-family: 'MyCustomFont', sans-serif;
+    justify-content: center;
+    align-items: center;
 }
 /* картинка */
 .news_img{
-    width: 500px;
-    height: 300px;
+    max-width: 1000px;
+    max-height: 800px;
     background-color: rgb(180, 180, 180);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .news_img img{
-    max-width: 100%;
-    max-height: 100%;
+    width:100%;
 }
 /* блок тексту */
 .infoblock {
     display: flex;
     flex-direction: column;
     position: relative;
-    width: 500px;
+    width: 1000px;
     height: 100%;
     margin-left: 10px;
 }
+.infoblock hr{
+    border-top: 1px solid black;
+    border-bottom: 2px solid black;
+    width: 1000px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+#news_cap{
+    display: flex;
+    justify-content: space-between;
+}
 .title {
     font-size: 30px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
     width: 100%;
     box-sizing: border-box;
-    color: inherit;
-    text-decoration: none; 
+    text-align: center;
 }
 .text{
     position: relative;
-    flex: 1;
-    word-wrap: break-word;
-    overflow-wrap: break-word;
-    overflow: hidden;
+    text-align: justify;
+    font-size: 20px;
 }
 .author{
     position: relative;
     white-space: nowrap;
     box-sizing: border-box;
+    font-size: 20px;
 }
-#news_space hr{
-    border-top: 1px solid black;
-    border-bottom: 2px solid black;
-    width: 1000px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+.time{
+    position: relative;
+    white-space: nowrap;
+    box-sizing: border-box;
+    font-size: 20px;
 }
 #lowbar{
     position: relative;

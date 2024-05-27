@@ -26,7 +26,7 @@
     <div id="proj_space">
         <div id="active_projects">
             <p class="title"> Активні проєкти <p>
-            {%for project in projects|slice:":3" %}
+            {%for project in projects %}
                 {%if project.active%}
                     <div class="project">
                         <div class="proj_img">
@@ -48,34 +48,7 @@
                     </div>
                 {%endif%}
             {% endfor %}
-            <button class="more_button" id="act_only" onclick="window.location.href='{% url 'act_projects' %}'">Переглянути усі активні проєкти</button>
-        </div>
-        <hr>
-        <div id="arhived_projects">
-            <p class="title"> Архівні проєкти <p>
-            {%for project in projects|slice:":3"%}
-                {%if not project.active%}
-                    <div class="project">
-                        <div class="proj_img">
-                            <img src="{{ MEDIA_URL }}{{ project.img.url }}" alt="Image">
-                        </div>
-                        <div class = "infoblock">
-                            <div class="proj_textblock">
-                                <p class="id" style="display: none;">{{project.id}}</p>
-                                <a class="title" href="{% url 'proj' project.id %}">{{project.title}}</a>
-                                <p class="text">{{project.text}}</p>
-                                <p class="author">{{project.author}}</p>
-                            </div>
-                            <div class="proj_moneybar" data-coll-money="{{ project.coll_money }}" data-req-money="{{ project.req_money }}">
-                                <div class="fulled_bar">
-                                </div>
-                                <p class="money">{{ project.coll_money }} / {{ project.req_money }}</p>
-                            </div>                            
-                        </div>
-                    </div>
-                {%endif%}
-            {% endfor %}
-            <button class="more_button" id="acrch_only" onclick="window.location.href='{% url 'arch_projects' %}'">Переглянути усі архівні проєкти</button>
+            <button class="more_button" id="back" onclick="window.location.href='{% url 'projects' %}'"> Повернутись на головну сторінку</button>
         </div>
     </div>  
     {% endblock %}

@@ -40,16 +40,16 @@ html, body {
     color: inherit;
     text-decoration: none; 
 }
-@media screen and (min-width: 1717px) {
+@media screen and (min-width: 1470px) {
     #highbar ul li {
         margin-right: 40px;
         margin-left: 40px;
     }
 }
-@media screen and (max-width: 1717px) {
+@media screen and (max-width: 1470px) {
     #highbar ul li {
-        margin-right: 10px;
-        margin-left: 10px;
+        margin-right: 4px;
+        margin-left: 4px;
     }
 }
 /* кнопка донату */
@@ -58,7 +58,6 @@ html, body {
     font-family: 'MyCustomFont', sans-serif;
     margin: 17px;
     margin-right: 20px;
-    font-size: 30px;
     height: 70px;
     width: 300px;
     border-radius: 7px;
@@ -68,19 +67,6 @@ html, body {
     font-weight: bold;
     color: #FFFFFF;
     cursor: pointer;
-}
-@media screen and (max-width: 1420px) {
-    #highbar ul li {
-        margin-right: 5px;
-        margin-left: 5px;
-        font-size: 23px;
-    }
-    #highbar button {
-        margin-right: 5px;
-        margin-left: 5px;
-        font-size: 40px;
-        width: 240px;
-    }
 }
 #lowbar{
     position: absolute;

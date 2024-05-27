@@ -28,10 +28,12 @@
             <a class="info_lable">Фонд «Серце Героя» регулярно та вчасно звітує про свою діяльність перед усіма нашими користувачами.</a>
             <button class="page_button" onclick="window.location.href='{% url 'report' %}'">Звітність</button>
         </div>
-        <div class="info_window" id = "projectbar">
-            <a class="info_lable">Кошти будуть спрямовані на загальну роботу фонду. Якщо ви бажаєте підримати конкретний збір, виберіть його серед проєктів.</a>
-            <button class="page_button" onclick="window.location.href='{% url 'projects' %}'">Проєкти</button>
-        </div>
+        {% if not project%}
+            <div class="info_window" id = "projectbar">
+                <a class="info_lable">Кошти будуть спрямовані на загальну роботу фонду. Якщо ви бажаєте підримати конкретний збір, виберіть його серед проєктів.</a>
+                <button class="page_button" onclick="window.location.href='{% url 'projects' %}'">Проєкти</button>
+            </div>
+        {% endif %}
     </div>
     <div id="donate">
         <a>Сума вашого внеску*</a>

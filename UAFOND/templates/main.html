@@ -42,6 +42,7 @@
             {% if project.active %}
                 <div class="ProjSlides fade">
                   <img src="{{ MEDIA_URL }}{{ project.img.url }}" style="width:100%">
+                  <p class="proj_title" ><a  href="{% url 'proj' project.id %}" style= "color: inherit; text-decoration: none; ">{{project.title}}</a></p>
                 </div>
             {% endif %}
         {% endfor %}
@@ -54,20 +55,20 @@
     </div>
     <div id="news">
         <div id="main_news">
-            {% for artcl in news %}
+            {% for article in news %}
                 {% if forloop.first %}
-                    <div id="news_image"><img src="{{ MEDIA_URL }}{{ artcl.img.url }}" alt="Image"></div>
-                    <p class="text">{{ artcl.text }}</p>
-                    <p class="time">{{ artcl.time }}</p>
+                    <div id="news_image"><img src="{{ MEDIA_URL }}{{ article.img.url }}" alt="Image"></div>
+                    <p class="text"><a href="{% url 'artcl' article.id %}" style= "color: inherit; text-decoration: none; ">{{ article.title }}</a></p>
+                    <p class="time">{{ article.time }}</p>
                 {% endif %}
             {% endfor %}
         </div>
         <div id="other_news">
-            {% for artcl in news|slice:":5" %}  
+            {% for article in news|slice:":5" %}  
                 {% if not forloop.first%}
                     <div class="news_artcl">
-                        <p class="text">{{ artcl.title }}</p>
-                        <p class="time">{{ artcl.time }}</p>
+                        <p class="text"><a href="{% url 'artcl' article.id %}" style= "color: inherit; text-decoration: none; ">{{ article.title }}</a></p>
+                        <p class="time">{{ article.time }}</p>
                         <hr>
                     </div>
                 {% endif %}
