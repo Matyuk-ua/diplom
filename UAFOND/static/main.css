@@ -85,7 +85,7 @@ html, body {
 }
 /* карусель */
 #slideshow-container {
-    width: 1000px;
+    width: 700px;
     position: relative;
     display: flex;
     margin: auto;

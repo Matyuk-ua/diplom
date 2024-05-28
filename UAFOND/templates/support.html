@@ -11,7 +11,7 @@
     {%block content%}
 
     <div id="highbar">
-        <img src = "../static/label.png">
+        <img src = "{% static 'label.png'%} ">
         <div id="center">
             <ul>
                 <li><a href="{% url 'main' %}">Титульна сторінка</a></li>
@@ -62,7 +62,7 @@
     </div>
     <div id="lowbar">
     </div>
-    <link rel="stylesheet" href="../static/support.css">
+    <link rel="stylesheet" href="{% static 'support.css' %}">
     <script src="{% static 'scripts/input_date.js' %}"></script>
     <script src="{% static 'scripts/donate_button.js' %}"></script>
     {% endblock %}

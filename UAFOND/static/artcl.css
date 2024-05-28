@@ -89,7 +89,6 @@ html, body {
 /* картинка */
 .news_img{
     max-width: 1000px;
-    max-height: 800px;
     background-color: rgb(180, 180, 180);
     display: flex;
     justify-content: center;

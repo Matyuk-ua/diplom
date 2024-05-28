@@ -38,10 +38,9 @@ def proj(request, id):
 def report(request):
     return render(request, 'report.html')
 
-def support(request, id=None):
-    if id:
-        project = get_object_or_404(Projects, id=id)
-        context = {'project': project}
-    else:
-        context = {}
-    return render(request, 'support.html', context)
+def support(request):
+    return render(request, 'support.html')
+
+def support_project(request, id):
+    project = get_object_or_404(Projects, id=id)
+    return render(request, 'support.html', {'project': project})

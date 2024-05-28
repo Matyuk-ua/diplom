@@ -34,4 +34,5 @@ urlpatterns = [
     path('project/<int:id>/', views.proj, name='proj'),
     path('report/', views.report, name='report'),
     path('support/', views.support, name='support'),
+    path('support_project/<int:id>/', views.support_project, name='support_project'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
