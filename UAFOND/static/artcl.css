@@ -77,9 +77,9 @@ html, body {
 }
 /* клас окремої новини */
 .news{
+    position: relative;
     display: flex;
     flex-direction: column;
-    height: 100%;
     width: auto;
     margin: 10px;
     font-family: 'MyCustomFont', sans-serif;
