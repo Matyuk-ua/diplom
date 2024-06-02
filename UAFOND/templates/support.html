@@ -34,6 +34,11 @@
                 <button class="page_button" onclick="window.location.href='{% url 'projects' %}'">Проєкти</button>
             </div>
         {% endif %}
+        {% if project%}
+        <div class="info_window" id = "projectbar">
+            <a class="info_lable" href="{% url 'proj' project.id %}">Кошти будуть спрямовані на підтримку проєкту «{{project.title}}».</a>
+        </div>
+        {% endif %}
     </div>
     <div id="donate">
         <a>Сума вашого внеску*</a>
@@ -58,11 +63,13 @@
                 </div>
             </div>
         </div>
-        <button id="donate_button">Підтримати</button>
+        <button id="donate_button" data-project-id="{{ project.id }}">Підтримати</button>
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
     </div>
     <div id="lowbar">
     </div>
-    <link rel="stylesheet" href="{% static 'support.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'support.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{% static 'scripts/input_date.js' %}"></script>
     <script src="{% static 'scripts/donate_button.js' %}"></script>
     {% endblock %}

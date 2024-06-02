@@ -1,4 +1,9 @@
-from django.shortcuts import render, get_object_or_404
+from django.http import JsonResponse, HttpResponse
+from django.shortcuts import get_object_or_404, render
+from decimal import Decimal
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__) 
 from .models import Projects
 from .models import News
 from .models import *
@@ -36,11 +41,28 @@ def proj(request, id):
     return render(request, 'proj.html', {'project': project})
 
 def report(request):
-    return render(request, 'report.html')
+    projects = Projects.objects.all()
+    return render(request, 'report.html', {'projects': projects})
 
 def support(request):
-    return render(request, 'support.html')
+    projects = Projects.objects.all().order_by("-id")
+    return render(request, 'support.html', {'projects': projects})
 
 def support_project(request, id):
     project = get_object_or_404(Projects, id=id)
-    return render(request, 'support.html', {'project': project})
+    
+    if request.method == 'POST':
+        amount = request.POST.get('amount')
+        logger.info(f"Received amount: {amount}")
+        try:
+            amount = Decimal(amount)
+            logger.info(f"Converted amount: {amount}")
+            project.coll_money += amount
+            project.save()
+            return JsonResponse({'new_coll_money': project.coll_money})
+        except (ValueError):
+            logger.error(f"Invalid amount value: {amount}")
+            return JsonResponse({'error': 'Invalid amount'}, status=400)
+    else:
+        return render(request, 'support.html', {'project': project})
+

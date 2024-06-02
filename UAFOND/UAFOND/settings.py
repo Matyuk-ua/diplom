@@ -12,10 +12,17 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+from environs import Env
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+env = Env()
+env.read_env()
+
+
+SERVER_IP = env.str('server_ip', default=None)
+SERVER_DOMEN = env.str('server_domain', default=None)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
@@ -26,7 +33,8 @@ SECRET_KEY = 'django-insecure-^-zcc_kb#b#yfs90wrpl(f*$@s(fno(s@8zt%%uw75is6v*g--
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['theheroheart.net', 'localhost', '127.0.0.1', SERVER_IP, SERVER_DOMEN]
+CSRF_TRUSTED_ORIGINS = [f'https://{SERVER_DOMEN}']
 
 
 # Application definition
@@ -40,6 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'UAFOND',
 ]
+INTERNAL_IPS = []
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -81,6 +90,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
+        
     }
 }
 

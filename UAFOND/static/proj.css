@@ -77,11 +77,13 @@ html, body {
 }
 /* клас окремого проєкту */
 .project{
+    position: relative;
     display: flex;
     flex-direction: column;
     width: auto;
     margin: 10px;
     margin-top: 40px;
+    margin-bottom: 105px;
     font-family: 'MyCustomFont', sans-serif;
     justify-content: center;
     align-items: center;
@@ -175,12 +177,12 @@ html, body {
     box-sizing: border-box;
 }
 #lowbar{
-    position: relative;
+    position: fixed;
     background-color: rgb(209, 209, 209);
     bottom: 0px;
     left: 0%;
     right: 0%;
-    margin-top: 0;
+    margin-top: 10px;
     padding: 0;
     height: 105px;
     width: 100xp;

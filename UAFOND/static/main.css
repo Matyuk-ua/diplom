@@ -78,6 +78,7 @@ html, body {
 #about p{
     font-family: 'MyCustomFont', sans-serif;
     font-size: 32px;
+    text-align: justify;
 }
 #about hr{
     border-top: 1px solid black;
@@ -161,10 +162,11 @@ html, body {
 #news{
     margin: auto;
     margin-top: 60px;
+    height: 700px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 105px;
+    margin-bottom: 130px;
 }
 /* остання новина */
 #main_news{
@@ -207,7 +209,7 @@ html, body {
     font-size: 17px;
 }
 #lowbar{
-    position: relative;
+    position: fixed;
     background-color: rgb(209, 209, 209);
     bottom: 0px;
     left: 0%;

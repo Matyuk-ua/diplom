@@ -87,6 +87,8 @@ html, body {
     margin: auto;
     font-size: 23px;
     width: 880px;
+    color: inherit;
+    text-decoration: none; 
 }
 .page_button{
     font-family: 'MyCustomFont', sans-serif;
@@ -104,12 +106,15 @@ html, body {
     width: 1000px;
     margin: auto;
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 105px;
     padding: 10px;
     background-color: rgb(229, 229, 229);
     font-family: 'MyCustomFont', sans-serif;
     font-size: 25px;
     border-radius: 10px;
+}
+#donate_space{
+    height: 100%;
 }
 /* поля вводу */
 .card_input{
@@ -156,7 +161,7 @@ html, body {
     margin-bottom: 10px;
 }
 #lowbar{
-    position: relative;
+    position: absolute;
     background-color: rgb(209, 209, 209);
     bottom: 0px;
     left: 0%;

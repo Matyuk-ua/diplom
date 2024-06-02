@@ -34,13 +34,13 @@
                 <p class="money">{{ project.coll_money }} / {{ project.req_money }}</p>
             </div> 
             <hr>
-            <button id = "support_proj" onclick="window.location.href='{% url 'support_project' project.id%}'"><a>Підтримати проєкт<a/></button>
+            <button id = "support_proj" onclick="window.location.href='{% url 'support_project' project.id%}'">Підтримати проєкт</button>
             <p class="text">{{project.text}}</p>                       
         </div>
     </div>
     <div id="lowbar">
     </div>
-    <link rel="stylesheet" href="{% static 'proj.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'proj.css' %}">
     <script src="{% static 'scripts/moneybar.js' %}"></script>
 </body>
 </html>

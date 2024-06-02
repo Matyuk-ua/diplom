@@ -18,8 +18,34 @@
         </ul>
         <button onclick="window.location.href='{% url 'support' %}'">Підтримати</button>
     </div>
+    <div id = "reports">
+        <p id = "rep_title">Звітність</p>
+        <hr>
+        <div class="info_window" id = "reportbar">
+            <a class="info_lable">Річний звіт 2023</a>
+            <div class="page_button"><a href="{% static 'docs/2023.xlsx' %}">Звітність</a></div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div id = "num_info">
+            <div class = "num_block" id = "money">
+                <p class = "num_title"> Сума пожертв </p>
+                <p class = "num_text">100000 грн</p>
+            </div>
+            <div class = "num_block" id = "num">
+                <p class = "num_title"> Кількість пожертв </p>
+                <p class = "num_text">1000</p>
+            </div>
+            <div class = "num_block" id = "projects">
+                <p class = "num_title"> Кількість проєктів </p>
+                <p class = "num_text">{{ projects|length }}</p>
+            </div>
+        </div>
+    </div>
+    
     <div id="lowbar">
     </div>
-    <link rel="stylesheet" href="../static/reports.css">
+    <link rel="stylesheet" type="text/css" href="../static/reports.css">
 </body>
 </html>

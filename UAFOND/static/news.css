@@ -96,6 +96,7 @@ html, body {
     display: grid;
     justify-content: center;
     width: 100%;
+    margin-bottom: 105px;
 }
 /* клас окремої новини */
 .news{
@@ -157,7 +158,7 @@ html, body {
     margin-bottom: 30px;
 }
 #lowbar{
-    position: relative;
+    position: fixed;
     background-color: rgb(209, 209, 209);
     bottom: 0px;
     left: 0%;

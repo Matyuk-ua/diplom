@@ -95,7 +95,8 @@ html, body {
 #proj_space{
     display: grid;
     justify-content: center;
-    width: 100%;
+    width: 100%;  
+    margin-bottom: 105px;
 }
 /* банер з останніми проєктами? */
 #project_banner{
@@ -124,6 +125,7 @@ html, body {
 /* клас окремого проєкту */
 .project{
     display: flex;
+    position: relative;
     width: 100%;
     height: 300px;
     margin: 10px;
@@ -218,7 +220,7 @@ html, body {
     margin-bottom: 30px;
 }
 #lowbar{
-    position: relative;
+    position: fixed;
     background-color: rgb(209, 209, 209);
     bottom: 0px;
     left: 0%;
