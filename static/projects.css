@@ -1,0 +1,235 @@
+@font-face {
+    font-family: 'JosefinSans';
+    src: url('/fonts/JosefinSans-VariableFont_wght.ttf') format('truetype');
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    min-width: 1100px;
+}
+
+/* заголовок */
+#highbar{
+    background-color: #FFB098;
+    position: relative;
+    top: 0px;
+    left: 0%;
+    right: 0%;
+    margin: 0;
+    padding: 0;
+    height: 105px;
+    display: flex; 
+    justify-content: space-between;
+}
+/* посилання на сторінки */
+#highbar ul {
+    list-style-type: none;
+    margin-top: 35px;
+    padding: 0;
+    display: inline-block; 
+}
+#highbar ul li {
+    font-family: 'MyCustomFont', sans-serif;
+    display: inline-block; 
+    font-size: 30px;
+    white-space: nowrap;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+#highbar ul li a{
+    color: inherit;
+    text-decoration: none; 
+}
+@media screen and (min-width: 1440px) {
+    #highbar ul li {
+        margin-right: 40px;
+        margin-left: 40px;
+    }
+}
+@media screen and (max-width: 1440px) {
+    #highbar ul li {
+        margin-right: 9px;
+        margin-left: 9px;
+    }
+}
+/* кнопка донату */
+#highbar button {
+    float: right;
+    font-family: 'MyCustomFont', sans-serif;
+    margin: 17px;
+    margin-right: 20px;
+    height: 70px;
+    width: 300px;
+    border-radius: 7px;
+    border-width: 0px;
+    font-size: 48px;
+    background-color: #3F3CDC;
+    font-weight: bold;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+#searchbar_field{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    height: auto;
+}
+#searchbar{
+    font-family: 'MyCustomFont', sans-serif;
+    font-size: 25px;
+    width: 800px;
+    margin: 10px;
+}
+#search{
+    width: 150px;
+    font-family: 'MyCustomFont', sans-serif;
+    background-color: #3F3CDC;
+    font-size: 30px;
+    font-weight: bold;
+    color: #FFFFFF;
+    cursor: pointer;
+}
+
+/* простір проєктів */
+#proj_space{
+    display: grid;
+    justify-content: center;
+    width: 100%;  
+    margin-bottom: 105px;
+}
+/* банер з останніми проєктами? */
+#project_banner{
+    width: 100%;
+}
+/* активні збори */
+#active_projects{
+    width: 1000px;
+    justify-content: center;
+}
+/* архівні збори */
+#arhived_projects{
+    width: 1000px;
+    justify-content: center;
+}
+.more_button{
+    font-family: 'MyCustomFont', sans-serif;
+    height: 56px;
+    width: 500px;
+    background-color: #3F3CDC;
+    color: #FFFFFF;
+    font-size: 25px;
+    margin-bottom: 10px;
+    cursor: pointer;
+}
+/* клас окремого проєкту */
+.project{
+    display: flex;
+    position: relative;
+    width: 100%;
+    height: 300px;
+    margin: 10px;
+    font-family: 'MyCustomFont', sans-serif;
+}
+/* картинка */
+.proj_img{
+    width: 500px;
+    height: 300px;
+    background-color: rgb(180, 180, 180);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.proj_img img{
+    max-width: 100%;
+    max-height: 100%;
+}
+/* блок тексту і грошей */
+.infoblock {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 500px;
+    height: 100%;
+    margin-left: 10px;
+}
+/* блок з текстом */
+.proj_textblock{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 100%;
+    height: 250px;
+}
+.title {
+    font-family: 'MyCustomFont', sans-serif;
+    font-size: 30px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+    box-sizing: border-box;
+    color: inherit;
+    text-decoration: none; 
+}
+.text{
+    position: relative;
+    flex: 1;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    overflow: hidden;
+}
+.author{
+    position: relative;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+/* прогрес бар */
+.proj_moneybar {
+    position: absolute;
+    height: 50px;
+    bottom: 10px;
+    width: 100%;
+    background-color: rgb(154, 154, 154);
+    border-radius: 0 30px 30px 0; /* Закруглюємо тільки ліві кути */
+    overflow: hidden; /* Це забезпечує правильне відображення закруглених кутів для .fulled_bar всередині */
+}
+
+.fulled_bar {
+    position: absolute;
+    height: 100%;
+    background-color: rgb(76, 175, 80);
+    border-radius: 0 30px 30px 0; /* Закруглюємо тільки ліві кути */
+}
+
+.proj_moneybar.full .fulled_bar {
+    border-radius: 0 30px 30px 0; /* Закруглюємо тільки ліві кути */
+}
+.money{
+    position: absolute;
+    display: flex;
+    right: 10px;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+#proj_space hr{
+    border-top: 1px solid black;
+    border-bottom: 2px solid black;
+    width: 1000px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+#lowbar{
+    position: fixed;
+    background-color: rgb(209, 209, 209);
+    bottom: 0px;
+    left: 0%;
+    right: 0%;
+    margin-top: 0;
+    padding: 0;
+    height: 105px;
+    width: 100xp;
+    display: flex; 
+    justify-content: space-between;
+    clear: both;
+}

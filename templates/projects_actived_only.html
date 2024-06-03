@@ -1,0 +1,61 @@
+<html lang="uk-UA">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Серце Героя</title>
+    {% load static %}
+</head>
+<body>
+    {% csrf_token %}
+    <div id="highbar">
+        <img src = "{% static 'label.png' %}">
+        <ul>
+            <li><a href="{% url 'main' %}">Титульна сторінка</a></li>
+            <li><a href="{% url 'about' %}">Про фонд</a></li>
+            <li><a href="{% url 'news' %}">Новини</a></li>
+            <li><a href="{% url 'report' %}">Звіти</a></li>
+        </ul>
+        <button onclick="window.location.href='{% url 'support' %}'">Підтримати</button>
+    </div>
+    {%block content%}
+    <div id = "searchbar_field">
+        <input id="searchbar" type="text" placeholder="Search..">
+        <button id="search">Пошук</button>
+    </div>
+    <div id="proj_space">
+        <div id="active_projects">
+            <p class="title"> Активні проєкти <p>
+            {%for project in projects %}
+                {%if project.active%}
+                    <div class="project">
+                        <div class="proj_img">
+                            <img src="{{ MEDIA_URL }}{{ project.img.url }}" alt="Image">
+                        </div>
+                        <div class = "infoblock">
+                            <div class="proj_textblock">
+                                <p class="id" style="display: none;">{{project.id}}</p>
+                                <a class="title" href="{% url 'proj' project.id %}">{{project.title}}</a>
+                                <p class="text">{{project.text}}</p>
+                                <p class="author">{{project.author}}</p>
+                            </div>
+                            <div class="proj_moneybar" data-coll-money="{{ project.coll_money }}" data-req-money="{{ project.req_money }}">
+                                <div class="fulled_bar">
+                                </div>
+                                <p class="money">{{ project.coll_money }} / {{ project.req_money }}</p>
+                            </div>                            
+                        </div>
+                    </div>
+                {%endif%}
+            {% endfor %}
+            <button class="more_button" id="back" onclick="window.location.href='{% url 'projects' %}'"> Повернутись на головну сторінку</button>
+        </div>
+    </div>  
+    {% endblock %}
+    <div id="lowbar">
+    </div>
+    <link rel="stylesheet" type="text/css" href="{% static 'projects.css' %}">
+    <script src="{% static 'scripts/moneybar.js' %}"></script>
+    <script src="{% static 'scripts/search_proj.js' %}"></script>
+</body>
+</html>

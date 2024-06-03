@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="uk-UA">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Серце Героя</title>
+    {% load static %}
+</head>
+<body>
+    {% csrf_token %}
+    <div id="highbar">
+        <img src="{% static 'label.png' %}">
+        <ul>
+            <li><a href="{% url 'about' %}">Про фонд</a></li>
+            <li><a href="{% url 'projects' %}">Проєкти</a></li>
+            <li><a href="{% url 'news' %}">Новини</a></li>
+            <li><a href="{% url 'report' %}">Звіти</a></li>
+        </ul>
+        <button onclick="window.location.href='{% url 'support' %}'">Підтримати</button>
+    </div>
+    <div id="about">
+        <p style = "font-size: 42px; font-weight: bold; ">Про фонд Серце Героя</p>
+        <p>Серце Героя - це благодійний фонд,
+            який відданий підтримці та допомозі
+            нашим героям та їх сім'ям. Коли війна
+            залишає свої сліди в житті багатьох,
+            ми стоїмо разом зі звичайними героями,
+            які віддали своє серце за мир. Наша
+            місія - надати підтримку у вигляді 
+            медичного догляду, матеріальної допомоги 
+            та соціальної адаптації тим, хто став 
+            жертвою війни. Через об'єднання зламаних 
+            сердець у доброчинності ми створюємо
+            спільноту, де кожен може знайти підтримку
+            та знайомство з надією на краще майбутнє.</p>
+        <hr>
+    </div>
+    {%block content%}
+    <div id="slideshow-container">
+        {% for project in projects|slice:":5"%}
+            {% if project.active %}
+                <div class="ProjSlides fade">
+                  <img src="{{ MEDIA_URL }}{{ project.img.url }}" style="width:100%">
+                  <p class="proj_title" ><a  href="{% url 'proj' project.id %}" style= "color: inherit; text-decoration: none; ">{{project.title}}</a></p>
+                </div>
+            {% endif %}
+        {% endfor %}
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>    
+        <div style="text-align:center">
+            <script src="{% static 'scripts/dots.js' %}"></script>
+        </div>
+    
+    </div>
+    <div id="news">
+        <div id="main_news">
+            {% for article in news %}
+                {% if forloop.first %}
+                    <div id="news_image"><img src="{{ MEDIA_URL }}{{ article.img.url }}" alt="Image"></div>
+                    <p class="text"><a href="{% url 'artcl' article.id %}" style= "color: inherit; text-decoration: none; ">{{ article.title }}</a></p>
+                    <p class="time">{{ article.time }}</p>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div id="other_news">
+            {% for article in news|slice:":6" %}  
+                {% if not forloop.first%}
+                    <div class="news_artcl">
+                        <p class="text"><a href="{% url 'artcl' article.id %}" style= "color: inherit; text-decoration: none; ">{{ article.title }}</a></p>
+                        <p class="time">{{ article.time }}</p>
+                        <hr>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>    
+    <div id="lowbar">
+    </div>
+    <link rel="stylesheet" type="text/css"  href="{% static 'main.css' %}" >
+    <script src="{% static 'scripts/Slideshow.js' %}"></script>
+    {% endblock %}
+</body>
+</html>

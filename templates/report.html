@@ -1,0 +1,51 @@
+<html lang="uk-UA">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Серце Героя</title>
+    {% load static %}
+</head>
+<body>
+    {% csrf_token %}
+    <div id="highbar">
+        <img src = "../static/label.png">
+        <ul>
+            <li><a href="{% url 'main' %}">Титульна сторінка</a></li>
+            <li><a href="{% url 'about' %}">Про фонд</a></li>
+            <li><a href="{% url 'projects' %}">Проєкти</a></li>
+            <li><a href="{% url 'news' %}">Новини</a></li>
+        </ul>
+        <button onclick="window.location.href='{% url 'support' %}'">Підтримати</button>
+    </div>
+    <div id = "reports">
+        <p id = "rep_title">Звітність</p>
+        <hr>
+        <div class="info_window" id = "reportbar">
+            <a class="info_lable">Річний звіт 2023</a>
+            <div class="page_button"><a href="{% static 'docs/2023.xlsx' %}">Звітність</a></div>
+        </div>
+        <br>
+        <br>
+        <br>
+        <div id = "num_info">
+            <div class = "num_block" id = "money">
+                <p class = "num_title"> Сума пожертв </p>
+                <p class = "num_text">100000 грн</p>
+            </div>
+            <div class = "num_block" id = "num">
+                <p class = "num_title"> Кількість пожертв </p>
+                <p class = "num_text">1000</p>
+            </div>
+            <div class = "num_block" id = "projects">
+                <p class = "num_title"> Кількість проєктів </p>
+                <p class = "num_text">{{ projects|length }}</p>
+            </div>
+        </div>
+    </div>
+    
+    <div id="lowbar">
+    </div>
+    <link rel="stylesheet" type="text/css" href="../static/reports.css">
+</body>
+</html>

@@ -1,0 +1,83 @@
+<html lang="uk-UA">
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@100&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Серце Героя</title>
+    {% load static %}
+</head>
+<body>
+    {% csrf_token %}
+    {%block content%}
+
+    <div id="highbar">
+        <img src = "{% static 'label.png'%} ">
+        <div id="center">
+            <ul>
+                <li><a href="{% url 'main' %}">Титульна сторінка</a></li>
+                <li><a href="{% url 'about' %}">Про фонд</a></li>
+                <li><a href="{% url 'projects' %}">Проєкти</a></li>
+                <li><a href="{% url 'news' %}">Новини</a></li>
+                <li><a href="{% url 'report' %}">Звіти</a></li>
+            </ul>
+        </div>
+    </div>
+    <div id = "headtitle">
+        <lable id="Title">ЗРОБИТИ ВНЕСОК НА ДОПОМОГУ ЗСУ ТА ФОНДУ</lable>
+        <div class="info_window" id = "reportbar">
+            <a class="info_lable">Фонд «Серце Героя» регулярно та вчасно звітує про свою діяльність перед усіма нашими користувачами.</a>
+            <button class="page_button" onclick="window.location.href='{% url 'report' %}'">Звітність</button>
+        </div>
+        {% if not project%}
+            <div class="info_window" id = "projectbar">
+                <a class="info_lable">Кошти будуть спрямовані на загальну роботу фонду. Якщо ви бажаєте підримати конкретний збір, виберіть його серед проєктів.</a>
+                <button class="page_button" onclick="window.location.href='{% url 'projects' %}'">Проєкти</button>
+            </div>
+        {% endif %}
+        {% if project%}
+        <div class="info_window" id = "projectbar">
+            <a class="info_lable" href="{% url 'proj' project.id %}">Кошти будуть спрямовані на підтримку проєкту «{{project.title}}».</a>
+        </div>
+        {% endif %}
+    </div>
+    <div id="donate">
+        <a>Сума вашого внеску*</a>
+        <input class="card_input" id="donateAmount" type="text" placeholder="0">
+        <span class="error" id="donateAmountError"></span>
+        
+        <div id="card_info">
+            <a>Номер платіжної картки</a>
+            <input class="card_input" id="card_num" type="text" placeholder="XXXX XXXX XXXX XXXX" maxlength="16">
+            <span class="error" id="cardNumError"></span>
+            
+            <div id="two_inputs">
+                <div class="column" id="date_column">
+                    <a>Дійсна до</a>
+                    <input class="card_input small_input" id="card_date" type="text" placeholder="ММ/РР" maxlength="5">
+                    <span class="error" id="cardDateError"></span>
+                </div>
+                <div class="column" id="cvv_column">
+                    <a>CVV/CVC</a>
+                    <input class="card_input small_input" id="CVV" type="text" placeholder="CVV" maxlength="4">
+                    <span class="error" id="cvvError"></span>
+                </div>
+            </div>
+        </div>
+        <button id="donate_button" data-project-id="{{ project.id }}">Підтримати</button>
+        <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
+    </div>
+    <div id="lowbar">
+    </div>
+    <link rel="stylesheet" type="text/css" href="{% static 'support.css' %}">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    if
+    <script src="{% static 'scripts/input_date.js' %}"></script>
+    {% if project%}
+        <script src="{% static 'scripts/donate_button.js' %}"></script>
+    {% endif %}
+    {% if not project%}
+        <script src="{% static 'scripts/donate_button_no_proj.js' %}"></script>
+    {% endif %}
+    {% endblock %}
+</body>
+</html>
